@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
 	attr_accessor :remember_token
 
 	before_save { self.email = email.downcase }
@@ -10,7 +9,7 @@ class User < ApplicationRecord
 									  uniqueness: { case_sensitive: false }
 									  # uniqueness: true     ( for case above Rails infers that uniqueness should be true as well.)
 	has_secure_password
-	validates :password, presence: true, length: { minimum: 6 }
+	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
     # Returns the hash digest of the given string.
     def User.digest(string)
